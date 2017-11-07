@@ -24,7 +24,7 @@ require './library/header.php';
 ?>
     </head>
     <body>
-        <div class="content">
+        <div class="content" style="width: 700px;">
             <div class="easyui-layout" style="width:700px;height:300px;">
                 <div id="content" region="center" style="padding:5px; text-align: center;">
                     <ul class="nav-bar">

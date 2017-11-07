@@ -43,7 +43,7 @@ else{
                                           
                 <div data-options="region:'center'">
                     <div class="row">
-                        <div class="kolom tepi" style="width: 15%;">
+                        <div class="kolom tepi" style="width: 15%; ">
                             <div class="thumbnail">
                                 <p>Name: <b><?=$name?></b></p>                         
                                 <p>Username: <b><?=$userName?></b></p>                         
