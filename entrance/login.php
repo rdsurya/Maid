@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Welcome</title>
-        <link href="../assets/css/navigation.css" rel="stylesheet" type="text/css">
+        
 <?php
 
 /* 
@@ -24,10 +24,10 @@ require './library/header.php';
 ?>
     </head>
     <body>
-        <div style="width: 50%; margin: auto;">
+        <div class="content">
             <div class="easyui-layout" style="width:700px;height:300px;">
                 <div id="content" region="center" style="padding:5px; text-align: center;">
-                    <ul>
+                    <ul class="nav-bar">
                         <li><a href="#">Login</a></li>
                         <li><a href="#">New Customer</a></li>
                      </ul>

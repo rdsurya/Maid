@@ -8,19 +8,19 @@ and open the template in the editor.
     Author     : user
 */
 
-ul {
+.nav-bar {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #9cc8f7;
+    background-color: #0099FF;
 }
 
-li {
+.nav-bar li {
     float: left;
 }
 
-li a {
+.nav-bar li a {
     display: block;
     color: white;
     text-align: center;
@@ -29,10 +29,11 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #0000FF;
+.nav-bar li a:hover {
+    background-color: #ffffff;
+    color: #0092DC;
 }
 
-.active {
+.nav-bar .active {
     background-color: #4CAF50;
 }

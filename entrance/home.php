@@ -21,11 +21,10 @@ if(!isset($_SESSION['USER_NAME'])){
     echo "<meta http-equiv=\"refresh\"content=\"2;URL=login.php\">";
     echo 'Username is not set';
 }
-
-$userName = $_SESSION[User::$keyUserName];
-$name = $_SESSION[User::$keyName];
-$myUser = $_SESSION[User::$keyUserObj];
-
+else{
+    $userName = $_SESSION[User::$keyUserName];
+    $name = $_SESSION[User::$keyName];
+    $myUser = $_SESSION[User::$keyUserObj];
 ?>
 <html>
     <head>
@@ -35,10 +34,58 @@ $myUser = $_SESSION[User::$keyUserObj];
         ?>
     </head>
     <body>
-        <h3>Welcome <?= $name?></h3>
-        <h3>My Object <?= $myUser->getName()?></h3>
+        <div class="content" style="border:1px solid #0099FF;">
+            <div class="easyui-layout">
+                <div data-options="region:'north',split:true" >
+                    <ul class="nav-bar">
+                        <li><a href="#">Welcome <strong><?= $name?></strong></a></li>
+                        <li style="float: right; display: block; margin: 0;"><a title="Log Out" href="logOut.php"><i class="fa fa-power-off fa-lg" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                 <div style="padding: 15px;"></div>
+                 <div region="center" >
+                    <div class="row">
+                        <div class="column">
+                            <div class="menuRd">
+                                <a style="display: block;" href="../manage_customer/">
+                                    <i class="fa fa-address-card-o fa-4x" aria-hidden="true"></i>
+                                    <p>Manage Customer</p>
+                                </a>
+                                
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="menuRd">
+                                <a style="display: block;">
+                                    <i class="fa fa-users fa-4x" aria-hidden="true"></i>
+                                        <p>Manage Worker</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="column ">
+                            <div class="menuRd">
+                                <a style="display: block;">
+                                    <i class="fa fa-calendar fa-4x" aria-hidden="true"></i>
+                                    <p>Manage Reservation</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+       
     </body>
+    
 </html>
+
+<?php    
+    
+}//end else
+
+?>
+
 
 
 
