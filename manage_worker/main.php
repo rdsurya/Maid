@@ -101,23 +101,21 @@ else{
                                     <th field="workersname" align="center" width="200" sortable="true">Name</th>
                                     <th field="workersphonenumber" align="center" width="200" sortable="true">Phone Number</th>
                                     <th field="workersalary" align="center" width="200" sortable="true">Salary</th>
-                                    <th field="workerstatus" align="center" width="200" sortable="true">Status</th>
-
-                                    <div id="toolbar">
-                                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newworker()">New worker</a>
-                                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editworker()">Update</a>
-                                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Delete</a>
-                                        &nbsp;
-                                        <span>Search:</span>
-                                        <input id="searchKey" class="easyui-textbox">
-                                        <a class="easyui-linkbutton" plain="true" onclick="doSearch()" title="Search"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
-                                        <a class="easyui-linkbutton" plain="true" onclick="doReloadData()" title="Refresh"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i></a>
-                                    </div>
+                                    <th field="workerstatus" align="center" width="200" sortable="true">Status</th>                                 
 
                             </thead>
                         </table>
                     </div>
-                    
+                    <div id="toolbar">
+                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newworker()">New worker</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editworker()">Update</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Delete</a>
+                        &nbsp;
+                        <span>Search:</span>
+                        <input id="searchKey" class="easyui-textbox">
+                        <a class="easyui-linkbutton" plain="true" onclick="doSearch()" title="Search"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
+                        <a class="easyui-linkbutton" plain="true" onclick="doReloadData()" title="Refresh"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i></a>
+                    </div>
                     <!--table end-->
                                    
                 </div>

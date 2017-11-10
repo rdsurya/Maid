@@ -103,6 +103,9 @@ else{
                             <!--dialog end--> 
                             
                             <!--datagrid start-->
+                            <div style="text-align: center;">
+                                <h2><i class="fa fa-address-card fa-lg" aria-hidden="true"></i> Customer Management</h2>
+                            </div>
                             <div class="demo-info" style="margin-bottom:10px">
                                     <div class="demo-tip icon-tip">&nbsp;</div>
 
@@ -110,28 +113,30 @@ else{
                             <table id="dg" title="CUSTOMER INFORMATION" class="easyui-datagrid" style="width:1325px;height:550px"
                                             url="datagridcustomer.php" 
                                             toolbar="#toolbar" pagination="true"
-                                            singleSelect="true" fitColumns="true">
-                                    <thead>
-                                            <tr>
-                                                    <th field="customerid" hidden="true" width="200">Customer ID</th>
-                                                    <th field="customername" align="center" width="200">Name</th>
-                                                    <th field="customerphonenumber" align="center" align="center" width="200">Phone Number</th>
-                                                    <th field="customerpostcode" align="center" width="200">Postcode</th>
-                                                    <th field="customerstate" align="center"width="200">State</th>
-                                                    <th field="customeraddress" width="200" align="center">Address</th>
-                                                    <th field="customeremail" width="200" align="center">Email</th>
-                                                    <th field="customerstatus" width="200" align="center">Status</th>
-
-                                                    <div id="toolbar">
-                                                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newCustomer()">New Customer</a>
-                                                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editcustomer()">Update</a>
-                                                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Delete</a>
-
-
-                                                    </div>
-                           
-                                    </thead>
+                                            singleSelect="true" fitColumns="true" remoteSort="false">
+                                <thead>
+                                    <tr>
+                                        <th field="customerid" hidden="true" width="200" sortable="true">Customer ID</th>
+                                        <th field="customername" align="center" width="200" sortable="true">Name</th>
+                                        <th field="customerphonenumber" align="center" align="center" width="200" sortable="true">Phone Number</th>
+                                        <th field="customerpostcode" align="center" width="200" sortable="true">Postcode</th>
+                                        <th field="customerstate" align="center"width="200" sortable="true">State</th>
+                                        <th field="customeraddress" width="200" align="center" sortable="true">Address</th>
+                                        <th field="customeremail" width="200" align="center" sortable="true">Email</th>
+                                        <th field="customerstatus" width="200" align="center" sortable="true">Status</th>                                               
+                                    </tr>
+                                </thead>
                             </table>
+                            <div id="toolbar">
+                                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newCustomer()">New Customer</a>
+                                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editcustomer()">Update</a>
+                                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Delete</a>
+                                &nbsp;
+                                <span>Search:</span>
+                                <input id="searchKey" class="easyui-textbox">
+                                <a class="easyui-linkbutton" plain="true" onclick="doSearch()" title="Search"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
+                                <a class="easyui-linkbutton" plain="true" onclick="doReloadData()" title="Refresh"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i></a>
+                            </div>
                             <!--datagrid end-->
                             
                         </div>
@@ -152,68 +157,83 @@ else{
         
         <script type="text/javascript">
             var url;
-		function newCustomer(){
-			$('#dlg').dialog('open').dialog('setTitle','New Customer');
-			$('#fm').form('clear');
-			url = 'insertcustomer.php';
-		}
-		function editcustomer(){
-			var row = $('#dg').datagrid('getSelected');
-			if (row){
-				$('#dlg').dialog('open').dialog('setTitle','Edit Customer');
-				$('#fm').form('load',row);
-				url = 'updatecustomer.php?customerid='+row.customerid;
-			}
-		}
-		function savecustomer(){
-			$('#fm').form('submit',{
-				url: url,
-				onSubmit: function(){
-					return $(this).form('validate');
-				},
-				
-				success: 
-				
-				function(result){
-					var result = eval('('+result+')');
-					if (result.errorMsg){
-						$.messager.show({
-							title: 'Error',
-							msg: result.errorMsg
-													});
-					} else {
-						
-						$('#dlg').dialog('close');		// close the dialog
-						$('#dg').datagrid('reload');	// reload the user data
-					}
-				}
-				
-				});
-				$('#dlg').dialog('close');		// close the dialog
-				//$('#dg').datagrid('reload');
-				location.reload(true);
-				$('#dg').datagrid('scrollTo', 25);
-		}
-		function destroyUser(){
-			var row = $('#dg').datagrid('getSelected');
-			if (row){
-				$.messager.confirm('Confirm','Are you sure you want to delete this customer?',function(r){
-					if (r){
-						$.post('deletecustomer.php?customerid='+row.customerid,function(result){
-							if (result.success){								
-								$('#dg').datagrid('reload');	// reload the user data
-							} else {
-								$.messager.show({	// show error message
-									title: 'Error',
-									msg: result.errorMsg
-								});
-							}
-						},'json');
-						location.reload(true);
-					}
-				});	
-			}			
-		}
+            function newCustomer(){
+                $('#dlg').dialog('open').dialog('setTitle','New Customer');
+                $('#fm').form('clear');
+                url = 'insertcustomer.php';
+            }
+            
+            function editcustomer(){
+                var row = $('#dg').datagrid('getSelected');
+                if (row){
+                    $('#dlg').dialog('open').dialog('setTitle','Edit Customer');
+                    $('#fm').form('load',row);
+                    url = 'updatecustomer.php?customerid='+row.customerid;
+                }
+            }
+            
+            function savecustomer(){
+                $('#fm').form('submit',{
+                    url: url,
+                    onSubmit: function(){
+                            return $(this).form('validate');
+                    },
+
+                    success: 
+
+                    function(result){
+                            var result = eval('('+result+')');
+                            if (result.errorMsg){
+                                    $.messager.show({
+                                            title: 'Error',
+                                            msg: result.errorMsg
+                                                                                            });
+                            } else {
+
+                                    $('#dlg').dialog('close');		// close the dialog
+                                    $('#dg').datagrid('reload');	// reload the user data
+                            }
+                    }
+
+                });
+                $('#dlg').dialog('close');		// close the dialog
+                //$('#dg').datagrid('reload');
+                location.reload(true);
+                $('#dg').datagrid('scrollTo', 25);
+            }
+            
+            function destroyUser(){
+                    var row = $('#dg').datagrid('getSelected');
+                    if (row){
+                        $.messager.confirm('Confirm','Are you sure you want to delete this customer?',function(r){
+                            if (r){
+                                $.post('deletecustomer.php?customerid='+row.customerid,function(result){
+                                    if (result.success){								
+                                            $('#dg').datagrid('reload');	// reload the user data
+                                    } else {
+                                            $.messager.show({	// show error message
+                                                    title: 'Error',
+                                                    msg: result.errorMsg
+                                            });
+                                    }
+                                },'json');
+                                location.reload(true);
+                            }
+                        });	
+                    }			
+            }
+                
+            function doSearch(){
+                $('#dg').datagrid('load',{
+                    key: $('#searchKey').val()
+                });
+            }
+
+            function doReloadData(){
+
+                $('#searchKey').val("");
+                doSearch();
+            }
         </script>
         <!--footer end-->
       
