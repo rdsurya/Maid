@@ -2,7 +2,7 @@
 
 //0$result = array();
  
-include 'connect.php';
+require '../class/connect.php';
   $sql = "SELECT customerid, customername, customerphonenumber, customerpostcode, customerstate, customeraddress , customeremail , customerstatus FROM customer";
 $rs = $conn->query($sql);
 

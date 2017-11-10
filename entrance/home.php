@@ -56,7 +56,7 @@ else{
                         </div>
                         <div class="column">
                             <div class="menuRd">
-                                <a style="display: block;">
+                                <a style="display: block;" href="../manage_worker/">
                                     <i class="fa fa-users fa-4x" aria-hidden="true"></i>
                                         <p>Manage Worker</p>
                                 </a>

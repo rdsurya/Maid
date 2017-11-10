@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require "../class/connect.php";
 
 $name = "customername";
 $phonenumber = "customerphonenumber";

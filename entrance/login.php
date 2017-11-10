@@ -12,10 +12,8 @@
  */
 session_start();
 require '../class/User.php';
-require '../class/CheckSession.php';
 
-$checkSession = new CheckSession();
-if($checkSession->isSessionValid()){
+if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null){
     //direct to home page
     echo "<meta http-equiv=\"refresh\"content=\"2;URL=home.php\">";
 }

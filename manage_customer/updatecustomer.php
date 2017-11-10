@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require "../class/connect.php";
 
 if (isset($_POST['customerid']) && isset($_POST['customername']) && isset($_POST['customerphonenumber'])
 	&& isset($_POST['customerpostcode']) && isset($_POST['customerstate']) && isset($_POST['customeraddress']) 
