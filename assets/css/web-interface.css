@@ -144,3 +144,16 @@ a {
 .thumbnail:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+
+.error-message{
+    margin: 4px 0 0 0;
+    padding: 0;
+    color: red;
+}
+.tb{
+    width:100%;
+    margin:0;
+    padding:5px 4px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}

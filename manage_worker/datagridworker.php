@@ -26,7 +26,8 @@ $rs = $conn->query("select count(*) from workers " . $whereSql);
 $row = mysqli_fetch_row($rs);
 $result["total"] = $row[0];
  
-$rs = $conn->query("SELECT workersid, workersname, workersphonenumber, workersalary , workerstatus FROM workers ".$whereSql . " limit $offset,$rows");
+$rs = $conn->query("SELECT workersid, ifnull(username, '-') AS username, workersname, workersphonenumber, workersalary , ifnull(type, 'worker') AS type, workerstatus FROM workers "
+        . "LEFT JOIN login on workersid=id and type in('Admin', 'Worker') ".$whereSql . " limit $offset,$rows");
  
 $items = array();
 while($row = mysqli_fetch_object($rs)){

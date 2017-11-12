@@ -51,7 +51,7 @@ else{
                 <div data-options="region:'center'">
                     
                     <!--dialog div-->
-                    <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
+                    <div id="dlg" class="easyui-dialog" style="width:400px;height:300px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
                         <div class="ftitle">Worker Information</div>
                         <form id="fm" method="post" novalidate>
 
@@ -59,23 +59,34 @@ else{
 
                                         <input name="workersid" cdlass="easyui-textbox" type="hidden" >
                                 </div>
-                                <div class="fitem">
+                                <div class="fitem" style="padding: 5px;">
+                                        <label>Username:</label>
+                                        <input name="username" id="username" class="easyui-textbox tb" data-options="required:true,validType:'length[3,20]',validateOnCreate:false,validateOnBlur:true,err:err">
+                                </div>
+                                <div class="fitem" style="padding: 5px;">
                                         <label>Name:</label>
-                                        <input name="workersname" class="easyui-validatebox tb" data-options="required:true,validType:'length[3,20]',validateOnCreate:false,validateOnBlur:true">
+                                        <input name="workersname" class="easyui-textbox tb" data-options="required:true,validType:'length[3,20]',validateOnCreate:false,validateOnBlur:true,err:err">
                                 </div>
-                                <div class="fitem">
+                                <div class="fitem" style="padding: 5px;">
                                         <label>Phone Number:</label>
-                                        <input name="workersphonenumber" class="easyui-textbox" required="true">
+                                        <input name="workersphonenumber" class="easyui-textbox" data-options="required:true,validType:'length[3,20]',validateOnCreate:false,validateOnBlur:true,err:err">
                                 </div>
-                                <div class="fitem">
+                                <div class="fitem" style="padding: 5px;">
                                         <label>Salary:</label>
-                                        <input name="workersalary" class="easyui-textbox"  required="true">
+                                        <input name="workersalary" class="easyui-textbox" type="number" min="0" max="9999" step="1" data-options="required:true,validateOnCreate:false,validateOnBlur:true,err:err">
                                 </div>
-                                <div class="fitem">
+                                <div class="fitem" style="padding: 5px;">
+                                        <label>Type:</label>
+                                        <select name="type" data-options="required:true,validateOnCreate:false,validateOnBlur:true,err:err">
+                                            <option value="admin">Admin</option>
+                                            <option value="worker">Worker</option>
+                                        </select>
+                                </div>
+                                <div class="fitem" style="padding: 5px;">
                                         <label>Status:</label>
-                                        <select name="workerstatus">
-                                         <option value="Active">Active</option>
-                         <option value="Inactive">Inactive</option>
+                                        <select name="workerstatus" data-options="required:true,validateOnCreate:false,validateOnBlur:true,err:err">
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
                                         </select>
                                 </div>
                         </form>
@@ -98,9 +109,11 @@ else{
                             <thead>
                                 <tr>
                                     <th field="workersid" hidden="true" width="200" sortable="true">Workers ID</th>
+                                    <th field="username" align="center" width="200" sortable="true">Username</th>
                                     <th field="workersname" align="center" width="200" sortable="true">Name</th>
                                     <th field="workersphonenumber" align="center" width="200" sortable="true">Phone Number</th>
                                     <th field="workersalary" align="center" width="200" sortable="true">Salary</th>
+                                    <th field="type" align="center" width="200" sortable="true">Type</th>                                 
                                     <th field="workerstatus" align="center" width="200" sortable="true">Status</th>                                 
 
                             </thead>
@@ -135,6 +148,7 @@ else{
             function newworker(){
                 $('#dlg').dialog('open').dialog('setTitle','New worker');
                 $('#fm').form('clear');
+                $("#_easyui_textbox_input1").prop('disabled', false);
                 url = 'insertworker.php';
             }
             function editworker(){
@@ -142,39 +156,43 @@ else{
                 if (row){
                         $('#dlg').dialog('open').dialog('setTitle','Edit worker');
                         $('#fm').form('load',row);
+                        $("#_easyui_textbox_input1").prop('disabled', true);
                         url = 'updateworker.php?workersid='+row.workersid;
                 }
             }
-            function saveworker(){
-                $('#fm').form(
-                'submit',{
-                    url: url,
-                    onSubmit: function(){
-                            return $(this).form('validate');
-                    },
-
-                    success: 
-
-                    function(result){
-                        var result = eval('('+result+')');
-                        if (result.errorMsg){
-                                $.messager.show({
-                                        title: 'Error',
-                                        msg: result.errorMsg
-                                                                                        });
-                        } else {
-
-                                $('#dlg').dialog('close');		// close the dialog
-                                $('#dg').datagrid('reload');	// reload the user data
-                        }
-                    }
-
-                });
-                $('#dlg').dialog('close');		// close the dialog
-                //$('#dg').datagrid('reload');
-                location.reload(true);
-                $('#dg').datagrid('scrollTo', 25);
-            }
+//            function saveworker(){
+//                $('#fm').form(
+//                'submit',{
+//                    url: url,
+//                    onSubmit: function(){
+//                            return $(this).form('validate');
+//                    },
+//
+//                    success: 
+//
+//                    function(result){
+//                        var reply = JSON.parse(result);
+//                        console.log(reply);
+//                        if (result.status === false){
+//                                $.messager.show({
+//                                        title: 'Error',
+//                                        msg: result.msg
+//                                                                                        });
+//                        } else {
+//                                alert(result);
+//                                $('#dlg').dialog('close');		// close the dialog
+//                                $('#dg').datagrid('reload');	// reload the user data
+//                        }
+//                    }
+//
+//                });
+//                $('#dlg').dialog('close');		// close the dialog
+//                //$('#dg').datagrid('reload');
+//                location.reload(true);
+//                $('#dg').datagrid('scrollTo', 25);
+//            }
+                     
+            
             function destroyUser(){
                 var row = $('#dg').datagrid('getSelected');
                 if (row){
@@ -206,6 +224,47 @@ else{
                 
                 $('#searchKey').val("");
                 doSearch();
+            }
+            
+            function saveworker(){
+              $('#fm').form({
+                    url:url,
+                    onSubmit: function(){
+                        // do some check
+                        // return false to prevent submit;
+                        if(!$(this).form('validate')){
+                            alert("Invalid input. Please complete all fields.");
+                            return false;
+                        };
+                    },
+                    success:function(data){
+                        var reply = JSON.parse(data);
+                        if(reply.status){
+                            alert("Success adding new worker.");
+                            $('#dlg').dialog('close');		// close the dialog
+                            //$('#dg').datagrid('reload');
+                            location.reload(true);
+                            $('#dg').datagrid('scrollTo', 25);
+                        }
+                        else{
+                            alert(reply.msg);
+                        }
+                    }
+                });
+                // submit the form
+                $('#fm').submit();  
+            }
+            
+            function err(target, message){
+                var t = $(target);
+                if (t.hasClass('textbox-text')){
+                    t = t.parent();
+                }
+                var m = t.next('.error-message');
+                if (!m.length){
+                    m = $('<div class="error-message"></div>').insertAfter(t);
+                }
+                m.html(message);
             }
 
 		
