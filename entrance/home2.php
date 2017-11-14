@@ -23,13 +23,7 @@
         <!-- Custom styles -->
         <link href="../assets/css_na/style.css" rel="stylesheet">
         <link href="../assets/css_na/style-responsive.css" rel="stylesheet" />
-        
-        <style type="text/css">
-            .huge {
-                font-size: 50px;
-                line-height: normal;
-            }
-        </style>
+       
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
         <!--[if lt IE 9]>
@@ -183,31 +177,41 @@
                     </div>
                     <!-- page start-->
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="huge">
-                                                <h1><i class="fa fa-comments fa-lg"></i></h1>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="huge">26</div>
-                                            <div>New Comments!</div>
-                                        </div>
-                                    </div>
+                        <div class="col-md-6 col-xs-12">
+                            <a style="cursor: pointer">
+                                <div class="info-box blue-bg">
+                                    <i class="fa fa-cloud-download"></i>
+                                    <div class="count">6.674</div>
+                                    <div class="title">Download</div>
                                 </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">View Details</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>                        
+                                <!--/.info-box-->
+                            </a>
+                        </div>
+                        <!--/.col-->
+
+                        <div class="col-md-6 col-xs-12">
+                            <a style="cursor: pointer">
+                                <div class="info-box brown-bg">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <div class="count">7.538</div>
+                                    <div class="title">Purchased</div>
+                                </div>
+                                <!--/.info-box-->
+                            </a>
+                        </div>
+                        <!--/.col-->
+
+                        <div class="col-md-6 col-xs-12">
+                            <a style="cursor: pointer">
+                                <div class="info-box dark-bg">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                    <div class="count">4.362</div>
+                                    <div class="title">Order</div>
+                                </div>
+                                <!--/.info-box-->
+                            </a>
+                        </div>
+                        <!--/.col-->                 
                     </div>
                     <!-- page end-->
                 </section>
