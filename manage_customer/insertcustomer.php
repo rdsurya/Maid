@@ -8,7 +8,10 @@ $state = "customerstate";
 $address = "customeraddress";
 $email = "customeremail";
 $status = "customerstatus";
- 
+
+$reply = new stdClass();
+$reply->status = false;
+$reply->msg = "Incomplete data";
 
 if( isset($_POST['customername']) && !empty($_POST['customername'])  && isset($_POST['customerphonenumber']) 
 		&& !empty($_POST['customerphonenumber']) && isset($_POST['customerpostcode']) && !empty($_POST['customerpostcode']) 
@@ -36,6 +39,10 @@ $sql = "INSERT INTO customer (customername, customerphonenumber, customerpostcod
 mysqli_query($conn, $sql)
 or die ("Error inserting data". mysqli_error($conn));
 
+$reply->status = true;
 
 }
+$conn->close();
+echo json_encode($reply);
+
 ?>

@@ -40,9 +40,9 @@ require '../class/connect.php';
         array_push($items, $row);
     }
     $result["rows"] = $items;
-
+    
     echo json_encode($result);
-
-
+    
+    $conn->close();
 
 ?>
