@@ -187,7 +187,7 @@ if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null
                             We now cover most major districts in Melaka.
                         </p>
                     </div>
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <div class="col-lg-8 col-lg-offset-2 text-center page-scroll">
                         <a href="#contact" class="btn btn-lg btn-outline">
                             <i class="fa fa-phone"></i> &nbsp; Book A Maid Now!
                         </a>
@@ -322,6 +322,7 @@ if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null
 
         <!-- Theme JavaScript -->
         <script src="../assets/js_fl/freelancer.min.js"></script>
+        <script src="../assets/js_fl/jquery.easing.min.js"></script>        
         
         <script type="text/javascript">
             $('#btnLogin').on('click', function(){

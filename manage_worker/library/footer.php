@@ -6,6 +6,6 @@
  * and open the template in the editor.
  */
 ?>
-<script type="text/javascript" src="../assets/easyui/jquery.min.js"></script>
-<script type="text/javascript" src="../assets/easyui/jquery.easyui.min.js"></script>
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
 
