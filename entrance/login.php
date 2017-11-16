@@ -22,6 +22,7 @@ if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null
 
         <link href="../assets/css_fl/font-family-montserrat.css" rel="stylesheet" type="text/css">
         <link href="../assets/css_fl/font-family-lato.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css_fl/font-family-lato.css" rel="stylesheet" type="text/css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -348,10 +349,10 @@ if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null
                                 window.location="home.php";
                             }
                             else if(data.trim()==="1"){
-                                $.messager.alert('Oops!', 'Username is not exist!', 'warning');
+                               alert('Oops! Username is not exist!');
                             }
                             else if(data.trim()==="2"){
-                                $.messager.alert('Oops!', 'Incorrect password!', 'warning');
+                                alert('Oops! Incorrect password!');
                             }
                             else{
                                 alert(data);
