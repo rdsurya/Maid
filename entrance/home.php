@@ -148,7 +148,7 @@ else{
                         <!--/.col-->
 
                         <div class="col-md-6 col-xs-12">
-                            <a style="cursor: pointer">
+                            <a style="cursor: pointer" href="../manage_reservation/">
                                 <div class="info-box dark-bg">
                                     <i class="fa fa-calendar"></i>
                                     <div class="count">4.362</div>
