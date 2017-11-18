@@ -283,26 +283,7 @@ if (!isset($_SESSION['USER_NAME'])) {
 
         </div>
         <!-- /#wrapper -->
-
-        <!-- Add Modal Start -->
-        <div class="modal fade" id="booking_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times fa-lg"></i></button>
-                        <h3 class="modal-title">Reservation</h3>
-                    </div>
-                    <div class="modal-body">
-
-                        <!-- content goes here -->
-
-                        <!-- content goes here -->
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- Add Modal End -->  
+       
 
 
 
@@ -427,7 +408,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                 $.ajax({
                     type: 'POST',
                     timeout: 6000,
-                    url: "./worker_control/getCompleteDetail.php",
+                    url: "./customer_control/getCompleteDetail.php",
                     dataType: 'json',
                     success: function (data, textStatus, jqXHR) {
                         createGraph(data, "Top 10 customer", $('#complete_canvas'), "Completed Booking");
@@ -442,7 +423,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                 $.ajax({
                     type: 'POST',
                     timeout: 6000,
-                    url: "./worker_control/getNewDetail.php",
+                    url: "./customer_control/getNewDetail.php",
                     dataType: 'json',
                     success: function (data, textStatus, jqXHR) {
                         createGraph(data, "Top 10 customer", $('#new_canvas'), "New Booking");
@@ -457,10 +438,10 @@ if (!isset($_SESSION['USER_NAME'])) {
                 $.ajax({
                     type: 'POST',
                     timeout: 6000,
-                    url: "./worker_control/getHourDetail.php",
+                    url: "./customer_control/getMoneyDetail.php",
                     dataType: 'json',
                     success: function (data, textStatus, jqXHR) {
-                        createGraph(data, "Top 10 customer", $('#hour_canvas'), "Duration in hours");
+                        createGraph(data, "Top 10 customer", $('#money_canvas'), "Money spent (RM)");
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         alert("Oops! Problem loading graph. " + errorThrown);
@@ -472,7 +453,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                 $.ajax({
                     type: 'POST',
                     timeout: 6000,
-                    url: "./worker_control/getCancelDetail.php",
+                    url: "./customer_control/getCancelDetail.php",
                     dataType: 'json',
                     success: function (data, textStatus, jqXHR) {
                         createGraph(data, "Top 10 customer", $('#cancel_canvas'), "Canceled Booking");

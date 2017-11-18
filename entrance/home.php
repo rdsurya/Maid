@@ -1,13 +1,12 @@
-<?php 
+<?php
 session_start();
 require '../class/User.php';
-if(!isset($_SESSION['USER_NAME'])){
+if (!isset($_SESSION['USER_NAME'])) {
     //direct to home page
     echo "<meta http-equiv=\"refresh\"content=\"1;URL=login.php\">";
     echo 'Username is not set';
     return;
-}
-else{
+} else {
     $userName = $_SESSION[User::$keyUserName];
     $name = $_SESSION[User::$keyName];
     $myUser = $_SESSION[User::$keyUserObj];
@@ -21,7 +20,7 @@ else{
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       
+
         <link rel="shortcut icon" href="img/favicon.png">
 
         <title>Maid Booking | Home</title>
@@ -36,7 +35,7 @@ else{
         <!-- Custom styles -->
         <link href="../assets/css_na/style.css" rel="stylesheet">
         <link href="../assets/css_na/style-responsive.css" rel="stylesheet" />
-       
+
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
         <!--[if lt IE 9]>
@@ -74,23 +73,24 @@ else{
                         <!-- user login dropdown start-->
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="username"><?= $name?></span>
+                                <span class="username"><?= $name ?></span>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu extended logout">
                                 <div class="log-arrow-up"></div>
                                 <li class="eborder-top">
                                     <a href="#"><i class="icon_profile"></i>
-                                        Username: <b><?= $userName?></b><br>
-                                        Type: <b><?= $userType?></b>
+                                        Username: <b><?= $userName ?></b><br>
+                                        Type: <b><?= $userType ?></b>
                                     </a>
+                                </li>
+                                <li>
+                                    <a href="changePwd.php"><i class="fa fa-key"></i> Change password?</a>
                                 </li>
                                 <li>
                                     <a href="logOut.php"><i class="fa fa-power-off"></i> Log Out</a>
                                 </li>
-                                <li>
-                                    <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                                </li>
+
                             </ul>
                         </li>
                         <!-- user login dropdown end -->
@@ -102,7 +102,7 @@ else{
 
             <!--sidebar start-->
             <aside>
-                <?php require './library/sideBar.php';?>
+                <?php require './library/sideBar.php'; ?>
             </aside>
             <!--sidebar end-->
 
@@ -160,7 +160,7 @@ else{
                             </a>
                         </div>
                         <!--/.col-->     
-                        
+
                         <div class="col-md-6 col-xs-12">
                             <a style="cursor: pointer" href="../report/main_worker.php">
                                 <div class="info-box orange-bg">
@@ -186,6 +186,9 @@ else{
             </div>
         </section>
         <!-- container section end -->
+
+       
+
         <!-- javascripts -->
         <?php require './library/footer.php'; ?>
         <!-- nice scroll -->
@@ -197,15 +200,15 @@ else{
 
     </body>
     <script>
-        $(function(){
+        $(function () {
             $.ajax({
                 type: 'POST',
                 url: "./control/getTotalWorker.php",
                 timeout: 6000,
                 dataType: 'json',
                 success: function (data, textStatus, jqXHR) {
-                        $('#totalWorker').html(data.total);
-                    }
+                    $('#totalWorker').html(data.total);
+                }
             });
             $.ajax({
                 type: 'POST',
@@ -213,8 +216,8 @@ else{
                 timeout: 6000,
                 dataType: 'json',
                 success: function (data, textStatus, jqXHR) {
-                        $('#totalCustomer').html(data.total);
-                    }
+                    $('#totalCustomer').html(data.total);
+                }
             });
             $.ajax({
                 type: 'POST',
@@ -222,9 +225,11 @@ else{
                 timeout: 6000,
                 dataType: 'json',
                 success: function (data, textStatus, jqXHR) {
-                        $('#totalBooking').html(data.total);
-                    }
+                    $('#totalBooking').html(data.total);
+                }
             });
+            
+           
         });
     </script>
 

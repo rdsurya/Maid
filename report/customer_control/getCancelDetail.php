@@ -3,7 +3,7 @@ require '../../class/connect.php';
 
 $reply = new stdClass();
 
-$sqlComplete="Select worker_id, worker_name, count(booking_date) as total from booking where status='2' group by worker_id order by total desc limit 10;";
+$sqlComplete="Select customer_id, customer_name, count(booking_date) as total from booking where status='2' group by customer_id order by total desc limit 10;";
 
 $resultComplete = mysqli_query($conn, $sqlComplete);
 
@@ -12,8 +12,8 @@ $arrName = array();
 $arrData = array();
 
 while($row = mysqli_fetch_assoc($resultComplete)){
-    array_push($arrID, $row['worker_id']);
-    array_push($arrName, $row['worker_name']);
+    array_push($arrID, $row['customer_id']);
+    array_push($arrName, $row['customer_name']);
     array_push($arrData, $row['total']);
 }
 
