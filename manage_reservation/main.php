@@ -19,7 +19,7 @@ if (!isset($_SESSION['USER_NAME'])) {
 
     <head>
 
-        <title>Maid Booking | Manage Customer</title>
+        <title>Maid Booking | Manage Reservation</title>
         <?php require './library/header.php'; ?>
 
         <!-- Custom CSS -->
@@ -27,6 +27,7 @@ if (!isset($_SESSION['USER_NAME'])) {
         <link href="../assets/css/jquery.flexdatalist.min.css" rel="stylesheet">
         <link href="../assets/css/jquery.datetimepicker.css" rel="stylesheet">
         <link href="../assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/css/buttons.bootstrap.min.css" rel="stylesheet">
         
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -84,6 +85,17 @@ if (!isset($_SESSION['USER_NAME'])) {
                         </li>
                         <li class="active">
                             <a href="#"><i class="fa fa-fw fa-calendar"></i> Manage Reservation</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-bar-chart"></i> Report <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="demo" class="collapse">
+                                <li>
+                                    <a href="../report/main_worker.php">Worker</a>
+                                </li>
+                                <li>
+                                    <a href="../report/main_customer.php">Customer</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -274,6 +286,14 @@ if (!isset($_SESSION['USER_NAME'])) {
         <script type="text/javascript" src="../assets/js/jquery.datetimepicker.full.min.js"></script>
         <script type="text/javascript" src="../assets/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="../assets/js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="../assets/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="../assets/js/buttons.bootstrap.min.js"></script>
+        <script type="text/javascript" src="../assets/js/buttons.colVis.min.js"></script>
+        <script type="text/javascript" src="../assets/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="../assets/js/buttons.print.min.js"></script>
+        <script type="text/javascript" src="../assets/js/jszip.min.js"></script>
+        <script type="text/javascript" src="../assets/js/pdfmake.min.js"></script>
+        <script type="text/javascript" src="../assets/js/vfs_fonts.js"></script>
 
         <script type="text/javascript">
 

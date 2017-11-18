@@ -108,7 +108,34 @@ $result = mysqli_query($conn, $sql);
             $(this).html('<input class="form-control" type="text" placeholder="Search ' + title + '" />');
         });
 
-        var table = $('#bookingTable').DataTable();
+        var table = $('#bookingTable').DataTable({
+            lengthChange: false,
+            dom: 'Bfrtip',
+            buttons: [ 'copy', 
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: ':visible',
+                        modifier: { search: 'applied' }
+                    }
+                }, 
+                {
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: ':visible',
+                        modifier: { search: 'applied' }
+                    }
+                }, 
+                {
+                extend: 'print',
+                    exportOptions: {
+                        columns: ':visible',
+                        modifier: { search: 'applied' }
+                    }
+                }, 
+                'colvis' 
+            ]
+        });
 
         // Apply the search
         table.columns().every(function () {
@@ -122,6 +149,9 @@ $result = mysqli_query($conn, $sql);
                 }
             });
         });
+        
+        table.buttons().container()
+        .appendTo( '#bookingTable_wrapper .col-sm-6:eq(0)' );
     });
 
 </script>

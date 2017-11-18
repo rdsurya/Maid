@@ -123,7 +123,7 @@ else{
                             <a style="cursor: pointer" href="../manage_customer/">
                                 <div class="info-box blue-bg">
                                     <i class="fa fa-address-card-o"></i>
-                                    <div class="count">6.674</div>
+                                    <div class="count" id="totalCustomer"></div>
                                     <div class="title">Customers</div>
                                     <br>
                                     <div class="small">Go to Manage Customer</div>
@@ -137,7 +137,7 @@ else{
                             <a style="cursor: pointer" href="../manage_worker/">
                                 <div class="info-box brown-bg">
                                     <i class="fa fa-users"></i>
-                                    <div class="count">7.538</div>
+                                    <div class="count" id="totalWorker"></div>
                                     <div class="title">Workers</div>
                                     <br>
                                     <div class="small">Go to Manage Worker</div>
@@ -151,10 +151,24 @@ else{
                             <a style="cursor: pointer" href="../manage_reservation/">
                                 <div class="info-box dark-bg">
                                     <i class="fa fa-calendar"></i>
-                                    <div class="count">4.362</div>
+                                    <div class="count" id="totalBooking"></div>
                                     <div class="title">Reservation</div>
                                     <br>
                                     <div class="small">Go to Manage Reservation</div>
+                                </div>
+                                <!--/.info-box-->
+                            </a>
+                        </div>
+                        <!--/.col-->     
+                        
+                        <div class="col-md-6 col-xs-12">
+                            <a style="cursor: pointer" href="../report/main_worker.php">
+                                <div class="info-box orange-bg">
+                                    <i class="fa fa-bar-chart"></i>
+                                    <div class="count" > $ % ?</div>
+                                    <div class="title">Report</div>
+                                    <br>
+                                    <div class="small">Go to View Report</div>
                                 </div>
                                 <!--/.info-box-->
                             </a>
@@ -182,6 +196,37 @@ else{
 
 
     </body>
+    <script>
+        $(function(){
+            $.ajax({
+                type: 'POST',
+                url: "./control/getTotalWorker.php",
+                timeout: 6000,
+                dataType: 'json',
+                success: function (data, textStatus, jqXHR) {
+                        $('#totalWorker').html(data.total);
+                    }
+            });
+            $.ajax({
+                type: 'POST',
+                url: "./control/getTotalCustomer.php",
+                timeout: 6000,
+                dataType: 'json',
+                success: function (data, textStatus, jqXHR) {
+                        $('#totalCustomer').html(data.total);
+                    }
+            });
+            $.ajax({
+                type: 'POST',
+                url: "./control/getTotalBooking.php",
+                timeout: 6000,
+                dataType: 'json',
+                success: function (data, textStatus, jqXHR) {
+                        $('#totalBooking').html(data.total);
+                    }
+            });
+        });
+    </script>
 
 </html>
 

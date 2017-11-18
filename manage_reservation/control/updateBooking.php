@@ -36,7 +36,7 @@ if (mysqli_num_rows($freeWorker) > 0) {
     $reply->msg = "Our worker $b_workerName is not available on $b_date from $b_start to $b_end. Please choose other worker or select different time.";
 } else {
     $sql = "UPDATE booking set booking_date='$b_date', start_time='$startTime', end_time='$endTime', duration=$b_duration, customer_id=$b_customerId, customer_name='$b_customerName', "
-            . "worker_id=$b_workerId, worker_name='$b_workerName', status='$b_status', comment='$b_comment', price=$b_price where `Id`=1;";
+            . "worker_id=$b_workerId, worker_name='$b_workerName', status='$b_status', comment='$b_comment', price=$b_price where `Id`=$b_id;";
     if (mysqli_query($conn, $sql)) {
         $reply->valid=true;
         $reply->msg="Reservation is updated. \nOur worker $b_workerName is successfully booked for our customer $b_customerName";

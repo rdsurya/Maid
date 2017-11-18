@@ -33,16 +33,14 @@
      
         <li class="sub-menu ">
             <a href="javascript:;" class="">
-                <i class="icon_documents_alt"></i>
-                <span>Pages</span>
+                <i class="fa fa-bar-chart"></i>
+                <span>Report</span>
                 <span class="menu-arrow arrow_carrot-right"></span>
             </a>
             <ul class="sub">
-                <li><a class="" href="profile.html">Profile</a></li>
-                <li><a class="" href="login.html"><span>Login Page</span></a></li>
-                <li><a class="active" href="blank.html">Blank Page</a></li>
-                <li><a class="" href="404.html">404 Error</a></li>
-            </ul>
+                <li><a class="" href="../report/main_worker.php">Worker</a></li>
+                <li><a class="" href="../report/main_customer.php"><span>Customer</span></a></li>
+             </ul>
         </li>
 
     </ul>
