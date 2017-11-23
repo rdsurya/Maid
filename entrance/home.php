@@ -63,7 +63,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                 </div>
 
                 <!--logo start-->
-                <a href="#" class="logo">Maid <span class="lite">Booking</span></a>
+                <a href="#" class="logo">House Cleaning <span class="lite">2 U System</span></a>
                 <!--logo end-->
 
                 <div class="top-nav notification-row">

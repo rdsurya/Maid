@@ -132,6 +132,9 @@ if (!isset($_SESSION['USER_NAME'])) {
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#booking_modal" id="btnAddModal">
                                             <i class="fa fa-fw fa-plus-circle"></i> New Reservation 
                                         </button>
+                                        <button title="Set charge rate" class="btn btn-warning" data-toggle="modal" data-target="#chg_modal" id="btnChgAddModal">
+                                            <i class="fa fa-fw fa-cogs"></i>
+                                        </button>
                                     </div>
                                 </h4>
 
@@ -275,6 +278,58 @@ if (!isset($_SESSION['USER_NAME'])) {
             </div>
         </div>
         <!-- Add Modal End -->  
+        
+         <!-- Add Modal Start -->
+        <div class="modal fade" id="chg_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times fa-lg"></i></button>
+                        <h3 class="modal-title">Charge Rate Per Hour</h3>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- content goes here -->
+                        <form class="form-horizontal" id="chgForm" autocomplete="off">
+                                                       
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">Current charge rate (RM)</label>  
+                                <div class="col-md-4">
+                                    <input id="c_chg" name="textinput" type="text" class="form-control input-md" required readonly>
+
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput">New charge rate (RM)</label>  
+                                <div class="col-md-4">
+                                    <input id="n_chg" name="textinput" type="number" placeholder="Set new charge rate" class="form-control input-md" required min="0" max="400" step="0.001">
+
+                                </div>
+                            </div>
+
+                            
+                        </form>
+                        <div class="text-center">
+                            <span>
+                                <button id="btnSaveChg" type="button" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+                            </span>
+                            &nbsp;
+                            <span>
+                                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clear_chg()"><i class="fa fa-times"></i> Close</button>
+                            </span>
+
+                        </div>
+
+                        <!-- content goes here -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Add Modal End -->  
 
 
 
@@ -304,6 +359,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                 initFlexSearch('#b_customer', './control/getCustomer.php', '');
                 initFlexSearch('#b_worker', './control/getWorker.php', '');
                 loadBookingTable();
+                getCurrentChg();
 
             });
 
@@ -397,6 +453,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                    var rounded = Math.round( hours * 100 ) / 100;
                    
                    $('#b_duration').val(rounded);
+                   calculateRate();
                    
                } 
             });
@@ -645,6 +702,80 @@ if (!isset($_SESSION['USER_NAME'])) {
                         alert("Oops!"+errorThrown);
                     }
                 });
+            }
+            
+            //------------------------------------------------------------------ rate ------------------------------------------------------------------
+            function clear_chg(){
+                $('#n_chg').val('');
+            }
+            
+            function getCurrentChg(){
+                $.ajax({
+                    type: 'POST',
+                    url: "control/getCharge.php",
+                    dataType: 'json',
+                    timeout: 60000,
+                    success: function (data, textStatus, jqXHR) {
+                        if(data.valid){
+                            $('#c_chg').val(data.val);
+                        }
+                        else{
+                            console.log("Problem chg: "+data.msg);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("Error chg: "+errorThrown);
+                    }
+                });
+            }
+            
+            $('#btnSaveChg').on('click', function(){
+                if(!$('#chgForm')[0].checkValidity() ){
+                    $('<input type="submit">').hide().appendTo('#chgForm').click().remove();
+                }
+                else{
+                    var n_chg = parseFloat($('#n_chg').val()); 
+                    var round = Math.round( n_chg * 100 ) / 100;
+                            
+                    var data={
+                        rate: round
+                    };
+                    
+                    $.ajax({
+                        type: 'POST',
+                        url: "control/setCharge.php",
+                        data: data,
+                        timeout: 60000,
+                        dataType: 'json',
+                        success: function (data, textStatus, jqXHR) {
+                            if(data.valid){
+                                alert(data.msg);
+                                $('#chg_modal').modal('hide');
+                                $('#c_chg').val(data.val);
+                                clear_chg();
+                            }
+                            else{
+                                alert(data.msg);
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert("Oops! "+errorThrown);
+                        }
+                    });
+                }
+            });
+            
+            function calculateRate(){
+                var rate = parseFloat($('#c_chg').val());
+                var dur = parseFloat($('#b_duration').val());
+                if(rate==null || rate===""){
+                    rate = 20.00;
+                }
+                
+                var charge = rate*dur;
+                var round = Math.round(charge*100)/100;
+                $('#b_price').val(round);
+                
             }
 
         </script>

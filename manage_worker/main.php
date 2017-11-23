@@ -49,7 +49,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../entrance/home.php">Maid <span class="lite">Booking</span></a>
+                    <a class="navbar-brand" href="../entrance/home.php">House Cleaning <span class="lite">2 U System</span></a>
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">

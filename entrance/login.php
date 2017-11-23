@@ -176,7 +176,7 @@ if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-2">
                         <p>
-                            We only hire trustworthy & reliable cleaners. 
+                            We only hire trustworthy & reliable maid. 
                             We carefully check the background of each & everyone, for your peace of mind. We are just a phone call away. 
                             Our dedicated customer support members are available daily, from 9am to 5pm to ensure you have a great experience - everytime
                         </p>
@@ -184,7 +184,7 @@ if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null
                     <div class="col-lg-4">
                         <p>
                             Want to book a cleaner with us ?
-                            Booking a cleaner couldn't be easier. Book friendly, fully-vetted home cleaner in 60 seconds! 
+                            Booking a cleaner couldn't be easier. Book friendly, fully-vetted home maid in 60 seconds! 
                             We now cover most major districts in Melaka.
                         </p>
                     </div>
@@ -215,13 +215,13 @@ if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null
                                 <i class="fa fa-user-circle-o"></i> Anis
                             </h3>
                             <h3 class="text-lowercase">
-                                <i class="fa fa-instagram"></i> @anis_maid
+                                <i class="fa fa-instagram"></i> @anyss_roslan
                             </h3>
                             <h3>
-                                <i class="fa fa-facebook-f"></i> ANIS MAID
+                                <i class="fa fa-facebook-f"></i> ANYSS ROSLAN
                             </h3>
                             <h3 class="text-lowercase">
-                                <i class="fa fa-envelope"></i> anis@gmail.com 
+                                <i class="fa fa-envelope"></i> anyss@gmail.com 
                             </h3>
                             <h3>
                                 <i class="fa fa-phone-square"></i> 0179909898
@@ -256,7 +256,7 @@ if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            Copyright &copy; Anis Maid 2016
+                            Copyright &copy; Anyss Roslan 2017
                         </div>
                     </div>
                 </div>
