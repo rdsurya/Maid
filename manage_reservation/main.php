@@ -305,7 +305,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">New charge rate (RM)</label>  
                                 <div class="col-md-4">
-                                    <input id="n_chg" name="textinput" type="number" placeholder="Set new charge rate" class="form-control input-md" required min="0" max="400" step="0.001">
+                                    <input id="n_chg" name="textinput" type="number" placeholder="Set new charge rate" class="form-control input-md" required min="0" max="400" step="0.01">
 
                                 </div>
                             </div>
