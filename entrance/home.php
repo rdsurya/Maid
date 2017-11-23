@@ -23,7 +23,7 @@ if (!isset($_SESSION['USER_NAME'])) {
 
         <link rel="shortcut icon" href="img/favicon.png">
 
-        <title>Maid Booking | Home</title>
+        <title>House Cleaning 2 U System  | Home</title>
 
         <!-- Bootstrap CSS -->
         <?php require './library/header.php'; ?>
@@ -181,7 +181,7 @@ if (!isset($_SESSION['USER_NAME'])) {
             <!--main content end-->
             <div class="text-right">
                 <div class="credits" style="padding: 10px;">
-                    Maid Booking for <a href="https://www.instagram.com/p/BYsrx76gIXD/?hl=en&taken-by=rdcfc">Diploma Project</a>
+                    House Cleaning 2 U System  for <a href="https://www.instagram.com/p/BYsrx76gIXD/?hl=en&taken-by=rdcfc">Diploma Project</a>
                 </div>
             </div>
         </section>

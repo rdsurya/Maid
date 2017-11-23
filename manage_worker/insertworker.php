@@ -47,6 +47,7 @@ if (isset($_POST['workersname']) && !empty($_POST['workersname']) && isset($_POS
 
                 if (mysqli_query($conn, $sql)) {
                     $reply->status = true;
+                    $reply->msg = "Success adding new worker.";
                 } else {
                     $reply->status = false;
                     $reply->msg = "Something is wrong with the query into table login. " . mysqli_error($conn);

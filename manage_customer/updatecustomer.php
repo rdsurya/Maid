@@ -23,6 +23,10 @@ if (isset($_POST['customerid']) && isset($_POST['customername']) && isset($_POST
     $query = $conn->query($sql);
     if($query){
         $reply->status = true;
+        $reply->msg = "Customer information is updated";
+        
+        $sql="Update booking set customer_name='$Name' where customer_id=$Id;";
+        $conn->query($sql);
     }
     else{
         $reply->status = false;

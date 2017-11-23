@@ -13,7 +13,7 @@ if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null
 
     <head>
         
-        <title>Maid Booking</title>
+        <title>House Cleaning 2 U System </title>
 
         <?php require './library/header.php';?>
 
@@ -43,7 +43,7 @@ if(isset($_SESSION[User::$keyUserName]) && $_SESSION[User::$keyUserName] != null
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="#page-top">Maid Booking System</a>
+                    <a class="navbar-brand" href="#page-top">House Cleaning 2 U System </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->

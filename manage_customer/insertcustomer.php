@@ -40,6 +40,7 @@ mysqli_query($conn, $sql)
 or die ("Error inserting data". mysqli_error($conn));
 
 $reply->status = true;
+$reply->msg="Success adding new customer.";
 
 }
 $conn->close();

@@ -19,7 +19,7 @@ if (!isset($_SESSION['USER_NAME'])) {
 
     <head>
 
-        <title>Maid Booking | Manage Reservation</title>
+        <title>House Cleaning 2 U System | Manage Reservation</title>
         <?php require './library/header.php'; ?>
 
         <!-- Custom CSS -->

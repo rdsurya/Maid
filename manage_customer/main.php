@@ -19,7 +19,7 @@ if (!isset($_SESSION['USER_NAME'])) {
 
     <head>
 
-        <title>Maid Booking | Manage Customer</title>
+        <title>House Cleaning 2 U System | Manage Customer</title>
         <?php require './library/header.php'; ?>
         <?php require './library/easy-ui_header.php'; ?>
         <!-- Custom CSS -->
@@ -263,6 +263,9 @@ if (!isset($_SESSION['USER_NAME'])) {
                                                 title: 'Error',
                                                 msg: objReply.value.msg
                                             });
+                                        }
+                                        else{
+                                            alert(objReply.value.msg);
                                         }
                                     } else {
                                         alert(result);

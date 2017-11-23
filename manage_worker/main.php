@@ -19,7 +19,7 @@ if (!isset($_SESSION['USER_NAME'])) {
 
     <head>
 
-        <title>Maid Booking | Manage Customer</title>
+        <title>House Cleaning 2 U System | Manage Customer</title>
         <?php require './library/header.php'; ?>
         <?php require './library/easy-ui_header.php'; ?>
         <!-- Custom CSS -->
@@ -178,7 +178,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                 </div>
                 <div class="fitem" style="padding: 5px;">
                     <label>Username:</label>
-                    <input name="username" id="username" class="easyui-textbox tb" data-options="validType:'length[3,20]',validateOnCreate:false,validateOnBlur:true,err:err">
+                    <input name="username" id="username" class="easyui-textbox tb" data-options="validType:'length[0,20]',validateOnCreate:false,validateOnBlur:true,err:err">
                     <p class="small">Optional, only for admin type.</p>
                 </div>
                 <div class="fitem" style="padding: 5px;">
@@ -295,7 +295,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                         success: function (data) {
                             var reply = JSON.parse(data);
                             if (reply.status) {
-                                alert("Success adding new worker.");
+                                alert(reply.msg);
                                 $('#dlg').dialog('close');		// close the dialog
                                 $('#dg').datagrid('reload');
 //                                location.reload(true);
