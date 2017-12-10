@@ -274,7 +274,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                         </div>
                     </div>
                     <!--/.row-->
-                    
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -283,7 +283,7 @@ if (!isset($_SESSION['USER_NAME'])) {
 
         </div>
         <!-- /#wrapper -->
-       
+
 
 
 
@@ -323,7 +323,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                     success: function (data, textStatus, jqXHR) {
                         $('#s_complete').html(data.complete);
                         $('#s_new').html(data.new);
-                        $('#s_money').html("RM "+data.hours);
+                        $('#s_money').html("RM " + data.hours);
                         $('#s_cancel').html(data.cancel);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -375,7 +375,12 @@ if (!isset($_SESSION['USER_NAME'])) {
                                 },
                                 scales: {
                                     yAxes: [{
-                                            ticks: {beginAtZero: true}
+                                            ticks: {
+                                                beginAtZero: true,
+                                                //stepSize: 2,
+                                                suggestedMin: 2,
+                                                suggestedMax: 10
+                                            }
                                         }],
                                     xAxes: [{
                                             maxBarThickness: 30,

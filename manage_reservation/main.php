@@ -264,6 +264,9 @@ if (!isset($_SESSION['USER_NAME'])) {
                             <span class="update_save_btn" id="divUpdate" style="display: none;">
                                 <button id="btnUpdateBooking" type="button" class="btn btn-success"><i class="fa fa-pencil-square-o"></i> Update</button>
                             </span>
+                            <span class="update_save_btn" id="divPrint" style="display: none;">
+                                <button id="btnPrint" type="button" class="btn btn-success"><i class="fa fa-print"></i> Print</button>
+                            </span>
                             &nbsp;
                             <span>
                                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clear_booking()"><i class="fa fa-times"></i> Close</button>
@@ -381,8 +384,8 @@ if (!isset($_SESSION['USER_NAME'])) {
                             var end = $('#b_end').datetimepicker('getValue');
                             var start = $('#b_start').datetimepicker('getValue');
 
-                            var startTime = (start.getHours()+":"+start.getMinutes());
-                            var endTime = (end.getHours()+":"+end.getMinutes());
+                            var startTime = $('#b_start').val(); //(start.getHours()+":"+start.getMinutes());
+                            var endTime = $('#b_end').val(); //(end.getHours()+":"+end.getMinutes());
 
                             if(Date.parse('01/01/2011 '+startTime) > Date.parse('01/01/2011 '+endTime)){
                                 console.log(start);
@@ -409,8 +412,8 @@ if (!isset($_SESSION['USER_NAME'])) {
                         if($('#b_start').val()){
                             var end = $('#b_end').datetimepicker('getValue');
                             var start = $('#b_start').datetimepicker('getValue');
-                            var startTime = (start.getHours()+":"+start.getMinutes());
-                            var endTime = (end.getHours()+":"+end.getMinutes());
+                            var startTime = $('#b_start').val(); //(start.getHours()+":"+start.getMinutes());
+                            var endTime = $('#b_end').val();// (end.getHours()+":"+end.getMinutes());
 
                             if(Date.parse('01/01/2011 '+startTime) > Date.parse('01/01/2011 '+endTime)){
                                 alert("End time should be later than start time!");
@@ -440,13 +443,18 @@ if (!isset($_SESSION['USER_NAME'])) {
                var endAda = (end !=="" && end != null);
                
                if(startAda && endAda){
-                   var startObj = $('#b_start').datetimepicker('getValue');
-                   var endObj = $('#b_end').datetimepicker('getValue');
+//                   var startObj = $('#b_start').datetimepicker('getValue');
+//                   var endObj = $('#b_end').datetimepicker('getValue');
+//                   
+//                   var startNow = new Date(2011, 10, 1, startObj.getHours(), startObj.getMinutes());
+//                   var endNow = new Date(2011, 10, 1, endObj.getHours(), endObj.getMinutes());
                    
-                   var startNow = new Date(2011, 10, 1, startObj.getHours(), startObj.getMinutes());
-                   var endNow = new Date(2011, 10, 1, endObj.getHours(), endObj.getMinutes());
+                   //----new date object---
+                   var mula = new Date("2011-01-01 "+start);
+                   var tamat = new Date("2011-01-01 "+end);
+                   console.log("Mula:"+mula+" Tamat:"+tamat);
                    
-                   var seconds = (endNow - startNow)/1000;
+                   var seconds = (tamat - mula)/1000; //(endNow - startNow)/1000;
                    
                    var hours = seconds/60/60;
                    
@@ -633,6 +641,7 @@ if (!isset($_SESSION['USER_NAME'])) {
             //---------------- view only ------------------------------
             $('#bookingTableDiv').on('click', '#btnViewModal', function(){
                 $('.update_save_btn').hide();
+                $('#divPrint').show();
                 
                 var hiden = $(this).closest('td').find('#b_obj').val();
                 var obj = JSON.parse(hiden);
@@ -652,6 +661,10 @@ if (!isset($_SESSION['USER_NAME'])) {
                 $('#booking_modal').modal('show');
                 
                 
+            });
+            
+            $('#btnPrint').on('click', function(){
+                window.open("print.php?id="+$('#modalId').val());
             });
             
             //delete booking record

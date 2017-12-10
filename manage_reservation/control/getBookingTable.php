@@ -25,11 +25,11 @@ $result = mysqli_query($conn, $sql);
     </thead>
     <tfoot>
         <tr>
-            <th>Reservation No</th>
-            <th>Date</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Duration</th>
+            <th style="width:5%">Reservation No</th>
+            <th style="width:5%">Date</th>
+            <th style="width:5%">Start Time</th>
+            <th style="width:5%">End Time</th>
+            <th style="width:5%">Duration</th>
             <th>Customer</th>
             <th>Worker</th>
             <th>Comment</th>
@@ -60,16 +60,16 @@ $result = mysqli_query($conn, $sql);
             }
             ?>
             <tr class="<?= $td_class ?>">
-                <td style="width:5%"><?= $obj->leID ?></td>
-                <td style="width:5%"><?= $obj->booking_date ?></td>
+                <td style="width:5%;"><?= $obj->leID ?></td>
+                <td style="width:8%"><?= $obj->booking_date ?></td>
                 <td style="width:5%"><?= $obj->startTime ?></td>
                 <td style="width:5%"><?= $obj->endTime ?></td>
                 <td style="width:5%"><?= $obj->duration ?></td>
                 <td><?= $obj->customer_name ?></td>
                 <td><?= $obj->worker_name ?></td>
                 <td><?= $obj->comment ?></td>
-                <td><?= $obj->price ?></td>
-                <td><?= $tempStatus ?></td>
+                <td style="width:5%"><?= $obj->price ?></td>
+                <td style="width:5%"><?= $tempStatus ?></td>
                 <td>
                     <input type="hidden" id="b_obj" value='<?=  json_encode($obj)?>'>
                     <div class="btn-group">
@@ -105,7 +105,7 @@ $result = mysqli_query($conn, $sql);
         // Setup - add a text input to each footer cell
         $('#bookingTable tfoot th').each(function () {
             var title = $(this).text();
-            $(this).html('<input class="form-control" type="text" placeholder="Search ' + title + '" />');
+            $(this).html('<input class="form-control" type="text" style="width:100%;" placeholder="Search ' + title + '" />');
         });
 
         var table = $('#bookingTable').DataTable({

@@ -13,15 +13,15 @@ $reply->msg = "Incomplete data";
 
 
 
-if (isset($_POST['workersname']) && !empty($_POST['workersname']) && isset($_POST['workersphonenumber']) && !empty($_POST['workersphonenumber']) && isset($_POST['workersalary']) && !empty($_POST['workersalary']) && isset($_POST['workerstatus']) && !empty($_POST['workerstatus']) && isset($_POST['type']) && !empty($_POST['type'])) {
+if (isset($_POST['workersname']) && !empty($_POST['workersname']) && isset($_POST['workersphonenumber']) && !empty($_POST['workersphonenumber']) && isset($_POST['workerstatus']) && !empty($_POST['workerstatus']) ) {
 
 
     $name = $_POST['workersname'];
     $phonenumber = $_POST['workersphonenumber'];
-    $salary = $_POST['workersalary'];
+    $salary = isset($_POST['workersalary'])?$_POST['workersalary']: 0;
     $status = $_POST['workerstatus'];
-    $username = $_POST['username'];
-    $type = $_POST['type'];
+    $username = isset($_POST['username'])?$_POST['username']:"-";
+    $type = isset($_POST['type'])?$_POST['type']:"Worker";
 
     // check whether username is available or not
     $result = mysqli_query($conn, "SELECT username FROM `login` WHERE `username` ='$username' ");
@@ -40,6 +40,7 @@ if (isset($_POST['workersname']) && !empty($_POST['workersname']) && isset($_POS
 
         if (mysqli_query($conn, $sql)) {
             $reply->status = true;
+            $reply->msg = "Success adding new worker.";
             if (strcasecmp($type, "admin") == 0) {
                 $last_id = mysqli_insert_id($conn);
                 $sql = "Insert into login(id, password, type, username) "
@@ -47,7 +48,7 @@ if (isset($_POST['workersname']) && !empty($_POST['workersname']) && isset($_POS
 
                 if (mysqli_query($conn, $sql)) {
                     $reply->status = true;
-                    $reply->msg = "Success adding new worker.";
+                    $reply->msg = "Success adding new worker(Admin).";
                 } else {
                     $reply->status = false;
                     $reply->msg = "Something is wrong with the query into table login. " . mysqli_error($conn);

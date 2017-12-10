@@ -6,12 +6,12 @@ $reply = new stdClass();
 $reply->status=false;
 $reply->msg="Invalid data";
 
-if (isset($_POST['workersid']) && isset($_POST['workersname']) && isset($_POST['workersphonenumber']) && isset($_POST['workersalary']) && isset($_POST['workerstatus'])) {
+if (isset($_POST['workersid']) && isset($_POST['workersname']) && isset($_POST['workersphonenumber']) && isset($_POST['workerstatus'])) {
 
     $Id = $_POST['workersid'];
     $Name = $_POST['workersname'];
     $PhoneNumber = $_POST['workersphonenumber'];
-    $Salary = $_POST['workersalary'];
+    $Salary = isset($_POST['workersalary'])?$_POST['workersalary']:0;
     $Status = $_POST['workerstatus'];
 
 

@@ -136,8 +136,8 @@ if (!isset($_SESSION['USER_NAME'])) {
                                             <th field="username" align="center" width="200" sortable="true">Username</th>
                                             <th field="workersname" align="center" width="200" sortable="true">Name</th>
                                             <th field="workersphonenumber" align="center" width="200" sortable="true">Phone Number</th>
-                                            <th field="workersalary" align="center" width="200" sortable="true">Salary</th>
-                                            <th field="type" align="center" width="200" sortable="true">Type</th>                                 
+                                            <!--<th field="workersalary" align="center" width="200" sortable="true">Salary</th>-->
+                                            <!--<th field="type" align="center" width="200" sortable="true">Type</th>-->                                 
                                             <th field="workerstatus" align="center" width="200" sortable="true">Status</th>                                 
 
                                     </thead>
@@ -176,11 +176,11 @@ if (!isset($_SESSION['USER_NAME'])) {
 
                     <input name="workersid" cdlass="easyui-textbox" type="hidden" >
                 </div>
-                <div class="fitem" style="padding: 5px;">
+<!--                <div class="fitem" style="padding: 5px;">
                     <label>Username:</label>
                     <input name="username" id="username" class="easyui-textbox tb" data-options="validType:'length[0,20]',validateOnCreate:false,validateOnBlur:true,err:err">
                     <p class="small">Optional, only for admin type.</p>
-                </div>
+                </div>-->
                 <div class="fitem" style="padding: 5px;">
                     <label>Name:</label>
                     <input name="workersname" class="easyui-textbox tb" data-options="required:true,validType:'length[3,20]',validateOnCreate:false,validateOnBlur:true,err:err">
@@ -189,17 +189,17 @@ if (!isset($_SESSION['USER_NAME'])) {
                     <label>Phone Number:</label>
                     <input name="workersphonenumber" class="easyui-textbox" data-options="required:true,validType:'length[3,20]',validateOnCreate:false,validateOnBlur:true,err:err">
                 </div>
-                <div class="fitem" style="padding: 5px;">
+<!--                <div class="fitem" style="padding: 5px;">
                     <label>Salary:</label>
                     <input name="workersalary" class="easyui-textbox" type="number" min="0" max="9999" step="1" data-options="required:true,validateOnCreate:false,validateOnBlur:true,err:err">
-                </div>
-                <div class="fitem" style="padding: 5px;">
+                </div>-->
+<!--                <div class="fitem" style="padding: 5px;">
                     <label>Type:</label>
                     <select name="type" data-options="required:true,validateOnCreate:false,validateOnBlur:true,err:err">
                         <option value="admin">Admin</option>
                         <option value="worker">Worker</option>
                     </select>
-                </div>
+                </div>-->
                 <div class="fitem" style="padding: 5px;">
                     <label>Status:</label>
                     <select name="workerstatus" data-options="required:true,validateOnCreate:false,validateOnBlur:true,err:err">
@@ -254,6 +254,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                                 };
                                 $.post('deleteworker.php', data, function (result) {
                                     if (result.status) {
+                                        alert("Worker information is deleted.");
                                         $('#dg').datagrid('reload');	// reload the user data
                                     } else {
                                         $.messager.show({// show error message

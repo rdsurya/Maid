@@ -274,7 +274,7 @@ if (!isset($_SESSION['USER_NAME'])) {
                         </div>
                     </div>
                     <!--/.row-->
-                    
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -394,7 +394,11 @@ if (!isset($_SESSION['USER_NAME'])) {
                                 },
                                 scales: {
                                     yAxes: [{
-                                            ticks: {beginAtZero: true}
+                                            ticks: {
+                                                beginAtZero: true,
+                                                suggestedMin: 2,
+                                                suggestedMax: 10
+                                            }
                                         }],
                                     xAxes: [{
                                             maxBarThickness: 30,
