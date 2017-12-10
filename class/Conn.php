@@ -23,7 +23,7 @@ class Conn {
         $this->hostName='localhost';
         $this->userName='root';
         $this->pass='';
-        $this->dbName='cleanning_system';
+        $this->dbName='cleanning_system'; // yg cleaning_system tu tukar jadi CS
         $this->conn = mysqli_connect($this->hostName, $this->userName, $this->pass, $this->dbName);
         // Check connection
         if (!$this->conn) {

@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "cleanning_system";
+$dbname = "cleanning_system"; // tukar jadi CS
 
 
 // Create connection
